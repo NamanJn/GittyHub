@@ -6,6 +6,13 @@ from collections import Counter
 import requests
 
 class GitHubAccount(object):
+	"""
+	This class represents a GitHub Account.
+	It has 3 main methods.
+	1. getName - Returns the name of the account holder
+	2. getRepos - Returns a list of repos as Repo class objects.
+	3. getFavLanguage - Returns the most used language of the account holder
+	"""
 
 	def __init__(self,name):
 		response = requests.get("https://api.github.com/users/"+name+"/repos").json()
@@ -64,6 +71,12 @@ class GitHubAccount(object):
 		return "< Account holder: "+str(self.name)+" >"
 
 class GitHubRepo(object):
+	"""
+	This class represents a GitHub repository.
+	It has 2 main methods.
+	1. getName - Returns the name of the repository.
+	1. getLanguage - Returns the name of the main language.
+	"""
 
 	def __init__(self, jsonRepo):
 		self.repo = jsonRepo
