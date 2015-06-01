@@ -1,14 +1,7 @@
-#!/Users/Naman/miniconda/bin/python
+#!/usr/bin/python
 
 # importing standard modules
-import re, inspect, os, sys,pdb;
-
-# some boiler plate code.
-poing = inspect.getabsfile(inspect.currentframe());
-ee = execfile;
-selfdir = os.path.dirname(poing);
-os.chdir(selfdir);
-
+import re, inspect, os, sys, pdb;
 from collections import Counter
 import requests
 
@@ -30,7 +23,6 @@ class GitHubAccount(object):
 		return self.name
 
 	def getRepos(self):
-
 		# user does not exist or user has no repos.
 		if self.name == None or len(self.reposJson) == 0: 
 			return None	
@@ -47,7 +39,6 @@ class GitHubAccount(object):
 			return self.repos
 
 	def getFavLanguage(self):
-
 		if self.name == None or len(self.reposJson) == 0:
 			return None
 
