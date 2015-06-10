@@ -1,6 +1,6 @@
 #!/Users/Naman/miniconda/bin/python
 import sys,os,re
-from unboxed import GitHubAccount, GitHubRepo
+from mainClass import GitHubAccount, GitHubRepo
 
 if len(sys.argv) <= 1:
 	        print "Please enter a username as an argument."

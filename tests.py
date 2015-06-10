@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import unittest2 
-from unboxed import GitHubAccount, GitHubRepo
+from mainClass import GitHubAccount, GitHubRepo
 
 class GitHubTest(unittest2.TestCase):
 
@@ -17,7 +17,7 @@ class GitHubTest(unittest2.TestCase):
 	def testUserWithRepos(self):
 		user = GitHubAccount("NamanJn")
 		self.assertEqual("NamanJn",user.getName() )
-		self.assertEqual(6, len(user.getRepos()) )
+		self.assertEqual(3, len(user.getRepos()) )
 
 	def testUserWithReposButNoFavLanguage(self):
 		user = GitHubAccount("Naman")
