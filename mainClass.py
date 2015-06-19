@@ -45,17 +45,16 @@ class GitHubAccount(object):
 		else:
 			return self.repos
 
-	def getFavLanguage(self):
+	def getFavLanguage(self,ignoreforked):
 		if self.name == None or len(self.reposJson) == 0:
 			return None
 
 		languageList = []
 		repos = self.getRepos()
-
 		for repo in repos:
 			language = repo.getLanguage()
-			if language != None:
-				languageList.append(language)	
+			if not (ignoreforked and repo.forked) and language != None:
+				languageList.append(language)
 
 		doesExist = Counter(languageList).most_common(1)
 
@@ -82,6 +81,7 @@ class GitHubRepo(object):
 		self.repo = jsonRepo
 		self.name = self.repo['name']
 		self.language = self.repo['language']
+		self.forked = self.repo['fork']
 
 	def getName(self):
 		return self.name
@@ -90,8 +90,8 @@ class GitHubRepo(object):
 		return self.language
 
 	def __str__(self):
-		return "Name: " + self.name + " | Language: " + str(self.language)
+		return "< Name: %s | Language: %s | Forked: %s >" % ( self.name, self.language, self.forked)
 
 	def __repr__(self):
-		return "Name: " + self.name + " | Language: " + str(self.language)
+		return "< Name: %s | Language: %s | Forked: %s >" % ( self.name, self.language, self.forked)
 
