@@ -23,17 +23,17 @@ class GitHubTest(unittest2.TestCase):
 		user = GitHubAccount("Naman")
 		self.assertEqual("Naman", user.getName() )
 		self.assertEqual(1, len(user.getRepos()) )
-		self.assertEqual(None, user.getFavLanguage(ignoreforked=False) )
+		self.assertEqual(None, user.getFavLanguage() )
 
 	def testUserNotExistsAndNoFavLanguage(self):
 		user = GitHubAccount("usernamedoesnotexist")
 		self.assertEqual(None, user.getName() )
-		self.assertEqual(None, user.getFavLanguage(ignoreforked=False) )
+		self.assertEqual(None, user.getFavLanguage() )
 
 	def testUserWithFavLanguage(self):
 		user = GitHubAccount("FriedSock")
 		self.assertEqual("FriedSock", user.getName() )
-		self.assertEqual("Clojure", user.getFavLanguage(ignoreforked=False) )
+		self.assertEqual("Clojure", user.getFavLanguage() )
 
 	def testUserWithFavLanguageIgnoreForked(self):
 		user = GitHubAccount("FriedSock")
@@ -43,5 +43,5 @@ class GitHubTest(unittest2.TestCase):
 	def testUserWithFavLanguage(self):
 		user = GitHubAccount("FriedSock")
 		self.assertEqual("FriedSock", user.getName() )
-		self.assertEqual("Clojure", user.getFavLanguage(ignoreforked=False) )
+		self.assertEqual("Clojure", user.getFavLanguage() )
 unittest2.main()

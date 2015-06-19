@@ -10,14 +10,12 @@ GitHubName = sys.argv[1]
 
 
 if len(sys.argv) == 3:
-	
+
 	if sys.argv[2] == "--ignoreforked":
 		ignoreforked = True
-
 	else:
 		print "Invalid option! One option available,i.e --ignoreforked"
 		sys.exit()
-
 else:
 	ignoreforked = False
 
@@ -25,16 +23,15 @@ else:
 a = GitHubAccount(GitHubName)
 
 if a.getName() == None:
-	print "Username "+GitHubName+" does not exist."
+	print "Username %s does not exist." % GitHubName
 
 elif a.getRepos() == None:
 	print "User does not have any repos."
 
 elif a.getFavLanguage(ignoreforked) == None:
 	print "User has no favourite language."
-	
+
 else:
 	print "Favourite language is " + a.getFavLanguage(ignoreforked=ignoreforked)+"."
 
 sys.exit()
-

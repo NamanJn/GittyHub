@@ -45,7 +45,7 @@ class GitHubAccount(object):
 		else:
 			return self.repos
 
-	def getFavLanguage(self,ignoreforked):
+	def getFavLanguage(self,ignoreforked=False):
 
 		if self.name == None or len(self.reposJson) == 0:
 			return None
