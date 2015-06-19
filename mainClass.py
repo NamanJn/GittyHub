@@ -17,23 +17,23 @@ class GitHubAccount(object):
 	def __init__(self,name):
 		response = requests.get("https://api.github.com/users/"+name+"/repos").json()
 
-		if type(response) == dict: 
+		if type(response) == dict:
 			self.name = None
 			self.reposJson = None
 		else:
 			self.name = name
 			self.reposJson = response
 
-		self.repos = None	
-	
+		self.repos = None
+
 	def getName(self):
 		return self.name
 
 	def getRepos(self):
 		# user does not exist or user has no repos.
-		if self.name == None or len(self.reposJson) == 0: 
-			return None	
-			
+		if self.name == None or len(self.reposJson) == 0:
+			return None
+
 		if self.repos == None:
 			repoList = []
 			for repo in self.reposJson:
@@ -41,20 +41,21 @@ class GitHubAccount(object):
 				repoList.append(temp)
 
 			self.repos = repoList
-			return repoList 
+			return repoList
 		else:
 			return self.repos
 
 	def getFavLanguage(self,ignoreforked):
+
 		if self.name == None or len(self.reposJson) == 0:
 			return None
 
-		languageList = []
 		repos = self.getRepos()
-		for repo in repos:
-			language = repo.getLanguage()
-			if not (ignoreforked and repo.forked) and language != None:
-				languageList.append(language)
+
+		if ignoreforked:
+			languageList = [repo.language for repo in repos if not repo.forked and repo.language != None ]
+		else:
+			languageList = [repo.language for repo in repos if repo.language != None ]
 
 		doesExist = Counter(languageList).most_common(1)
 
@@ -94,4 +95,3 @@ class GitHubRepo(object):
 
 	def __repr__(self):
 		return "< Name: %s | Language: %s | Forked: %s >" % ( self.name, self.language, self.forked)
-
