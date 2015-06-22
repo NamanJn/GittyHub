@@ -4,6 +4,11 @@ The main file is "findFavLang".
 
 Example Use:
 
-<h4>./findFavLang monster</h4>
+<code>./findFavLang monster</code>
 
 where monster is the username.
+
+<h4>Options:</h4>
+<ul>
+<li><code> --ignoreforked </code> - This will ignore forked repos. </li>
+</ul>

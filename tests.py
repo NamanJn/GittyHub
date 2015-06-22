@@ -44,4 +44,5 @@ class GitHubTest(unittest2.TestCase):
 		user = GitHubAccount("FriedSock")
 		self.assertEqual("FriedSock", user.getName() )
 		self.assertEqual("Clojure", user.getFavLanguage() )
+
 unittest2.main()
