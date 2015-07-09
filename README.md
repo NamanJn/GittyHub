@@ -10,5 +10,5 @@ where monster is the username.
 
 <h4>Options:</h4>
 <ul>
-<li><code> --ignoreforked </code> - This will ignore forked repos. </li>
+<li><code> -i </code> - This will ignore forked repos. </li>
 </ul>

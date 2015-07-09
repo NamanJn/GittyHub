@@ -49,9 +49,9 @@ class GitHubAccount(object):
 
 		if self.name == None or len(self.reposJson) == 0:
 			return None
-
+		
 		repos = self.getRepos()
-
+		
 		if ignoreforked:
 			languageList = [repo.language for repo in repos if not repo.forked and repo.language != None ]
 		else:
